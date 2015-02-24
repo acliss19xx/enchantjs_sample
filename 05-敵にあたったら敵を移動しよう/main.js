@@ -6,6 +6,7 @@ window.onload = function(){
     game.fps = 30;
 
     game.preload("chara1.png");
+    game.preload("chara2.png");
 
     game.onload = function(){
 	game.rootScene.backgroundColor = "blue";
@@ -18,10 +19,10 @@ window.onload = function(){
         game.rootScene.addChild(bear);
 
         enemy = new Sprite(32,32);
-        enemy.image = game.assets["chara1.png"];
+        enemy.image = game.assets["chara2.png"];
         enemy.x = 200;
         enemy.y = 200;
-        enemy.frame = 10;
+        enemy.frame = 0;
         game.rootScene.addChild(enemy);
 
 	//毎フレームのたびに敵とあたっているかチェック

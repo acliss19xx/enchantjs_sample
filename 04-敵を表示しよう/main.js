@@ -6,6 +6,7 @@ window.onload = function(){
     game.fps = 30;
 
     game.preload("chara1.png");
+    game.preload("chara2.png");
 
     game.onload = function(){
 	game.rootScene.backgroundColor = "blue";
@@ -23,7 +24,7 @@ window.onload = function(){
         enemy.image = game.assets["chara2.png"];
         enemy.x = 200;
         enemy.y = 200;
-        enemy.frame = 10;
+        enemy.frame = 0;
         game.rootScene.addChild(enemy);
 
         game.addEventListener(Event.RIGHT_BUTTON_DOWN,function(){
