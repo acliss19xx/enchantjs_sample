@@ -3,7 +3,7 @@ enchant();
 window.onload = function(){
    var game = new Core(320, 320);
 
-    game.fps = 30;
+    game.fps = 10;
 
     game.preload("chara1.png");
     game.preload("chara2.png");
@@ -18,20 +18,27 @@ window.onload = function(){
         bear.frame = 5;
         game.rootScene.addChild(bear);
 
-        enemy = new Sprite(32,32);
-        enemy.image = game.assets["chara2.png"];
-        enemy.x = 200;
-        enemy.y = 200;
-        enemy.frame = 0;
-        game.rootScene.addChild(enemy);
+        //敵キャラクターの設定
+        enemy = new Sprite(32,32); //敵キャラのスプライトオブジェクトの作成
+        enemy.image = game.assets["chara2.png"]; //敵キャラの画像を選択
+        enemy.x = 200; //最初の表示位置X座標
+        enemy.y = 200; //最初の表示位置Y座標
+        enemy.frame = 0; //最初の画像
+        game.rootScene.addChild(enemy); //表示
 
+        bear.addEventListener(Event.ENTER_FRAME,function(){
+          //this.frame  bear.frameのこと
+          //this.age    bear.ageのこと ageはキャラクターが表示されてからのフレーム数
+          //3フレームたったら画像を変更する
+          this.frame = (this.age % 3) + 5;
+        });
 	//毎フレームのたびに敵とあたっているかチェック
         game.addEventListener(Event.ENTER_FRAME,function(){
             //敵とあたったら
             if(bear.intersect(enemy)){
                 //ランダムに移動する。
                 enemy.x = Math.floor(Math.random() * (320-enemy.width));
-                enemy.y = Math.floor(Math.random() * (320-enemy.width)); 
+                enemy.y = Math.floor(Math.random() * (320-enemy.width));
             }
         });
 
