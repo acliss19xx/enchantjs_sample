@@ -9,6 +9,11 @@ window.onload = function(){
 
     game.onload = function(){
 	game.rootScene.backgroundColor = "blue";
+        //バーチャルパッドの生成
+        var pad = new Pad();
+        pad.x   = 0;
+        pad.y   = 220;
+        game.rootScene.addChild(pad);
 
      	bear = new Sprite(32, 32);
     	bear.image = game.assets["chara1.png"];
