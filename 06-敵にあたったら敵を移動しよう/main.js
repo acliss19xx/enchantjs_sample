@@ -39,32 +39,37 @@ window.onload = function(){
         });
 	//毎フレームのたびに敵とあたっているかチェック
         game.addEventListener(Event.ENTER_FRAME,function(){
-            //敵とあたったら
+            var input = game.input;
+
+            //自機キャラクターの移動
+            if (input.left){
+                //キャラクターのX座標がゲーム画面の左端じゃなければ、3マス移動する
+                if(bear.x > 0){
+                    bear.x = bear.x - 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
+            }
+            if (input.right){
+                //キャラクターのX座標がゲーム画面の右端じゃなければ、3マス移動する
+                if(bear.x < game.width - bear.width){
+                    bear.x = bear.x + 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
+            }
+            if (input.up){
+                //キャラクターのY座標がゲーム画面の上端じゃなければ、3マス移動する
+                if(bear.y > 0){
+                    bear.y = bear.y - 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
+            }
+            if (input.down){
+                //キャラクターのY座標がゲーム画面の下端じゃなければ、3マス移動する
+                if(bear.y < game.height - bear.height){
+                    bear.y = bear.y + 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
+            }
             if(bear.intersect(enemy)){
                 //ランダムに移動する。
                 enemy.x = Math.floor(Math.random() * (320-enemy.width));
                 enemy.y = Math.floor(Math.random() * (320-enemy.height));
-            }
-        });
-
-        game.addEventListener(Event.RIGHT_BUTTON_DOWN,function(){
-            if(bear.x < game.width - bear.width){
-                bear.x = bear.x + 3;
-            }
-        });
-        game.addEventListener(Event.LEFT_BUTTON_DOWN,function(){
-            if(bear.x > 0){
-                bear.x = bear.x - 3;
-            }
-        });
-        game.addEventListener(Event.DOWN_BUTTON_DOWN,function(){
-            if(bear.y < game.height - bear.height){
-                bear.y = bear.y + 3;
-            }
-        });
-        game.addEventListener(Event.UP_BUTTON_DOWN,function(){
-            if(bear.y > 0){
-                bear.y = bear.y - 3;
             }
         });
     };

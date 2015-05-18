@@ -22,28 +22,33 @@ window.onload = function(){
         bear.frame = 5;
         game.rootScene.addChild(bear);
 
-        game.addEventListener(Event.RIGHT_BUTTON_DOWN,function(){
-            //キャラクターのX座標がゲーム画面の右端じゃなければ、3マス移動する
-            if(bear.x < game.width - bear.width){
-                bear.x = bear.x + 3;
+        game.addEventListener(Event.ENTER_FRAME, function(e){
+            var input = game.input;
+
+            //自機キャラクターの移動
+            if (input.left){
+                //キャラクターのX座標がゲーム画面の左端じゃなければ、3マス移動する
+                if(bear.x > 0){
+                    bear.x = bear.x - 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
             }
-        });
-        game.addEventListener(Event.LEFT_BUTTON_DOWN,function(){
-            //キャラクターのX座標がゲーム画面の左端じゃなければ、3マス移動する
-            if(bear.x > 0){
-                bear.x = bear.x - 3;
+            if (input.right){
+                //キャラクターのX座標がゲーム画面の右端じゃなければ、3マス移動する
+                if(bear.x < game.width - bear.width){
+                    bear.x = bear.x + 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
             }
-        });
-        game.addEventListener(Event.DOWN_BUTTON_DOWN,function(){
-            //キャラクターのY座標がゲーム画面の下端じゃなければ、3マス移動する
-            if(bear.y < game.height - bear.height){
-                bear.y = bear.y + 3;
+            if (input.up){
+                //キャラクターのY座標がゲーム画面の上端じゃなければ、3マス移動する
+                if(bear.y > 0){
+                    bear.y = bear.y - 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
             }
-        });
-        game.addEventListener(Event.UP_BUTTON_DOWN,function(){
-            //キャラクターのY座標がゲーム画面の上端じゃなければ、3マス移動する
-            if(bear.y > 0){
-                bear.y = bear.y - 3;
+            if (input.down){
+                //キャラクターのY座標がゲーム画面の下端じゃなければ、3マス移動する
+                if(bear.y < game.height - bear.height){
+                    bear.y = bear.y + 3;// １を3に変更。一回の移動あたり座標を3移動させる
+                }
             }
         });
     };

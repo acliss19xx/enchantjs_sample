@@ -22,22 +22,24 @@ window.onload = function(){
         bear.frame = 5;
         game.rootScene.addChild(bear);
 
-	//右矢印キーが押されたらX座標を１ドット右に動かす
-        game.addEventListener(Event.RIGHT_BUTTON_DOWN,function(){
-            bear.x = bear.x + 1;
+        game.addEventListener(Event.ENTER_FRAME, function(e){
+            var input = game.input;
+
+            //自機キャラクターの移動
+            if (input.left){
+                bear.x = bear.x - 1;
+            }
+            if (input.right){
+                bear.x = bear.x + 1;
+            }
+            if (input.up){
+                bear.y = bear.y - 1;
+            }
+            if (input.down){
+                bear.y = bear.y + 1;
+            }
         });
-	//左矢印キーが押されたらX座標を１ドット左に動かす
-        game.addEventListener(Event.LEFT_BUTTON_DOWN,function(){
-            bear.x = bear.x - 1;
-        });
-	//下矢印キーが押されたらY座標を１ドット下に動かす
-        game.addEventListener(Event.DOWN_BUTTON_DOWN,function(){
-            bear.y = bear.y + 1;
-        });
-	//上矢印キーが押されたらY座標を１ドット上に動かす
-        game.addEventListener(Event.UP_BUTTON_DOWN,function(){
-            bear.y = bear.y - 1;
-        });
+
     };
     game.start();
 };

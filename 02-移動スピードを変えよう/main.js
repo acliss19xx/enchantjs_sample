@@ -22,17 +22,22 @@ window.onload = function(){
         bear.frame = 5;
         game.rootScene.addChild(bear);
 
-        game.addEventListener(Event.RIGHT_BUTTON_DOWN,function(){
-            bear.x = bear.x + 3; // １を3に変更。一回の移動あたり座標を3移動させる
-        });
-        game.addEventListener(Event.LEFT_BUTTON_DOWN,function(){
-            bear.x = bear.x - 3; // １を3に変更。一回の移動あたり座標を3移動させる
-        });
-        game.addEventListener(Event.DOWN_BUTTON_DOWN,function(){
-            bear.y = bear.y + 3; // １を3に変更。一回の移動あたり座標を3移動させる
-        });
-        game.addEventListener(Event.UP_BUTTON_DOWN,function(){
-            bear.y = bear.y - 3; // １を3に変更。一回の移動あたり座標を3移動させる
+        game.addEventListener(Event.ENTER_FRAME, function(e){
+            var input = game.input;
+
+            //自機キャラクターの移動
+            if (input.left){
+                bear.x = bear.x - 3;// １を3に変更。一回の移動あたり座標を3移動させる
+            }
+            if (input.right){
+                bear.x = bear.x + 3;// １を3に変更。一回の移動あたり座標を3移動させる
+            }
+            if (input.up){
+                bear.y = bear.y - 3;// １を3に変更。一回の移動あたり座標を3移動させる
+            }
+            if (input.down){
+                bear.y = bear.y + 3;// １を3に変更。一回の移動あたり座標を3移動させる
+            }
         });
     };
     game.start();
