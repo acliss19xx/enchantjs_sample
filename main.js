@@ -27,16 +27,28 @@ window.onload = function(){
 
             //自機キャラクターの移動
             if (input.left){
-                bear.x = bear.x - 3;
+                //キャラクターのX座標がゲーム画面の左端じゃなければ、3マス移動する
+                if(bear.x > 0){
+                    bear.x = bear.x - 3;
+                }
             }
             if (input.right){
-                bear.x = bear.x + 3;
+                //キャラクターのX座標がゲーム画面の右端じゃなければ、3マス移動する
+                if(bear.x < game.width - bear.width){
+                    bear.x = bear.x + 3;
+                }
             }
             if (input.up){
-                bear.y = bear.y - 3;
+                //キャラクターのY座標がゲーム画面の上端じゃなければ、3マス移動する
+                if(bear.y > 0){
+                    bear.y = bear.y - 3;
+                }
             }
             if (input.down){
-                bear.y = bear.y + 3;
+                //キャラクターのY座標がゲーム画面の下端じゃなければ、3マス移動する
+                if(bear.y < game.height - bear.height){
+                    bear.y = bear.y + 3;
+                }
             }
         });
     };
