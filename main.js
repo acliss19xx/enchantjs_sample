@@ -6,7 +6,8 @@ window.onload = function(){
     game.fps = 10;
 
     game.preload("chara1.png");
-
+    game.preload("chara2.png");
+    
     game.onload = function(){
         game.rootScene.backgroundColor = "blue";
         //バーチャルパッドの生成
@@ -28,6 +29,14 @@ window.onload = function(){
           //3フレームたったら画像を変更する
           this.frame = (this.age % 3) + 5;
         });
+        
+        //敵キャラクターの設定
+        enemy = new Sprite(32,32); //敵キャラのスプライトオブジェクトの作成
+        enemy.image = game.assets["chara2.png"]; //敵キャラの画像を選択
+        enemy.x = 200; //最初の表示位置X座標
+        enemy.y = 200; //最初の表示位置Y座標
+        enemy.frame = 0; //最初の画像
+        game.rootScene.addChild(enemy); //表示
         
         game.addEventListener(Event.ENTER_FRAME, function(e){
             var input = game.input;
