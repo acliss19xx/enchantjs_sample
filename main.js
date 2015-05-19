@@ -22,6 +22,23 @@ window.onload = function(){
         bear.frame = 5;
         game.rootScene.addChild(bear);
 
+        game.addEventListener(Event.ENTER_FRAME, function(e){
+            var input = game.input;
+
+            //自機キャラクターの移動
+            if (input.left){
+                bear.x = bear.x - 1;
+            }
+            if (input.right){
+                bear.x = bear.x + 1;
+            }
+            if (input.up){
+                bear.y = bear.y - 1;
+            }
+            if (input.down){
+                bear.y = bear.y + 1;
+            }
+        });
     };
     game.start();
 };
