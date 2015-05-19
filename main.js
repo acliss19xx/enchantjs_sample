@@ -66,6 +66,14 @@ window.onload = function(){
                     bear.y = bear.y + 3;
                 }
             }
+            
+            //自機が敵にあたったら
+            if(bear.intersect(enemy)){
+                //ランダムに移動する。
+                enemy.x = Math.floor(Math.random() * (320-enemy.width));
+                enemy.y = Math.floor(Math.random() * (320-enemy.height));
+            }
+        
         });
     };
     game.start();
