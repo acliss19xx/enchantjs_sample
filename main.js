@@ -22,6 +22,13 @@ window.onload = function(){
         bear.frame = 5;
         game.rootScene.addChild(bear);
 
+        bear.addEventListener(Event.ENTER_FRAME,function(){
+          //this.frame  bear.frameのこと
+          //this.age    bear.ageのこと ageはキャラクターが表示されてからのフレーム数
+          //3フレームたったら画像を変更する
+          this.frame = (this.age % 3) + 5;
+        });
+        
         game.addEventListener(Event.ENTER_FRAME, function(e){
             var input = game.input;
 
