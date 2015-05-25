@@ -5,8 +5,6 @@ window.onload = function(){
 
     game.fps = 10;
 
-    game.preload("chara1.png");
-
     game.onload = function(){
 	game.rootScene.backgroundColor = "blue";
         //バーチャルパッドの生成
